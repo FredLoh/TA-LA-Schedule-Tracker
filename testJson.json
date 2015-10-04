@@ -1,1 +1,72 @@
-{"classes":[{"class":"Operating Systems","class-num":"3753","class-id":"12953","ta-la-list":[{"Name":"David Baird","ta-la":"1","picture-id":"23145","start-time":"12:00","end-time":"4:00"}]}]}
+{
+  "classes": [
+    {
+      "class": "Operating Systems",
+      "class-num": "3753",
+      "class-id": "12953",
+      "ta-la-list": [
+        {
+          "Name": "David Baird",
+          "ta-la": "1",
+          "picture-id": "23145",
+          "user-id": "12345",
+          "start-time": "12:00",
+          "end-time": "4:00"
+        }
+      ]
+    },
+    {
+      "class": "Software Development Methods and Tools",
+      "class-num": "3308",
+      "class-id": "21394",
+      "ta-la-list": [
+        {
+          "Name": "David Baird",
+          "ta-la": "1",
+          "picture-id": "23145",
+          "user-id": "12345",
+          "start-time": "12:00",
+          "end-time": "4:00"
+        },
+        {
+          "Name": "Noah Dillon",
+          "ta-la": "2",
+          "picture-id": "12348",
+          "user-id": "54321",
+          "start-time": "14:00",
+          "end-time": "18:00"
+        }
+      ]
+    },
+    {
+      "class": "Data Structures",
+      "class-num": "2270",
+      "class-id": "91234",
+      "ta-la-list": [
+        {
+          "Name": "David Baird",
+          "ta-la": "1",
+          "picture-id": "23145",
+          "user-id": "12345",
+          "start-time": "12:00",
+          "end-time": "4:00"
+        }
+      ]
+    },
+    {
+      "class": "Introduction to Computer Programmning",
+      "class-num": "1300",
+      "class-id": "87658",
+      "ta-la-list": [
+        {
+          "Name": "David Baird",
+          "ta-la": "1",
+          "picture-id": "23145",
+          "user-id": "12345",
+          "start-time": "12:00",
+          "end-time": "4:00"
+        }
+      ]
+    }
+  ]
+}
