@@ -28,8 +28,8 @@ func BaseJSONGet(success:()->()) {
             guard let jsonDict : NSMutableDictionary = try? NSJSONSerialization.JSONObjectWithData(dataFromStringUTF, options: NSJSONReadingOptions.MutableContainers) as! NSMutableDictionary else {
                 return
             }
-            let menuHoldingArray = (jsonDict["classes"] as? NSMutableArray)!
-            print(menuHoldingArray)
+            TestArray = (jsonDict["classes"] as? NSMutableArray)!
+            print(TestArray)
             success()
         }
     }
