@@ -16,6 +16,7 @@
 		DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E6B1BC1CA6400B63F2A /* BaseJSON.swift */; };
 		DB8E7E6E1BC1CC2800B63F2A /* ClassListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E6D1BC1CC2800B63F2A /* ClassListCell.swift */; };
 		DB8E7E701BC1CC7A00B63F2A /* ClassListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */; };
+		DB8E7E721BC1CF5200B63F2A /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DB8E7E6B1BC1CA6400B63F2A /* BaseJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseJSON.swift; sourceTree = "<group>"; };
 		DB8E7E6D1BC1CC2800B63F2A /* ClassListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListCell.swift; sourceTree = "<group>"; };
 		DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListView.swift; sourceTree = "<group>"; };
+		DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				DB8E7E3C1BC1CA3400B63F2A /* AppDelegate.swift */,
 				DB8E7E6D1BC1CC2800B63F2A /* ClassListCell.swift */,
 				DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */,
+				DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */,
 				DB8E7E401BC1CA3400B63F2A /* Main.storyboard */,
 				DB8E7E431BC1CA3400B63F2A /* Assets.xcassets */,
 				DB8E7E451BC1CA3400B63F2A /* LaunchScreen.storyboard */,
@@ -273,6 +276,7 @@
 				DB8E7E3D1BC1CA3400B63F2A /* AppDelegate.swift in Sources */,
 				DB8E7E701BC1CC7A00B63F2A /* ClassListView.swift in Sources */,
 				DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */,
+				DB8E7E721BC1CF5200B63F2A /* GlobalVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
