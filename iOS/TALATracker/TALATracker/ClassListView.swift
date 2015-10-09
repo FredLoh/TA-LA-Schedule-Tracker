@@ -16,6 +16,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         BaseJSONGet { () -> () in
             print("SUCCESS")
+            print("Print")
             self.tableView.reloadData()
         }
         
