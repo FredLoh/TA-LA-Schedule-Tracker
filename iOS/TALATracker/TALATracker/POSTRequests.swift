@@ -14,7 +14,7 @@ func sendFirstPOST(success:()->()) {
     let getURL = NSURL(string: urlString)
     let request:NSMutableURLRequest = NSMutableURLRequest(URL:getURL!)
     request.HTTPMethod = "POST"
-    let bodyData = "None for now"
+    let bodyData = "name=Bob"
     request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
         
@@ -23,6 +23,8 @@ func sendFirstPOST(success:()->()) {
 //        let resStringNS = NSString(data: data!, encoding: NSUTF8StringEncoding)
 //        print(resStringNS)
         print(response)
+        print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        
         success()
     }
 }
