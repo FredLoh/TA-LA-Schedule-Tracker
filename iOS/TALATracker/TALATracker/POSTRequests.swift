@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 
 func sendFirstPOST(success:()->()) {
-    let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/"
+    let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php"
     let getURL = NSURL(string: urlString)
     let request:NSMutableURLRequest = NSMutableURLRequest(URL:getURL!)
     request.HTTPMethod = "POST"
-    let bodyData = "name=Bob"
+    /* POST format appears to be as follows, type=(type)&name=(name */
+    let bodyData = "type=name&phrase=Bob"
     request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
         
