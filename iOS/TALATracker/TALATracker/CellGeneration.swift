@@ -22,9 +22,11 @@ func generateInitialCell(tableView: UITableView, indexPath: NSIndexPath)->UITabl
     }
     
     className.text = classN
-    className.snp_makeConstraints { (make) -> Void in
-        make.center.equalTo(classCell)
-    }
+    dispatch_async(dispatch_get_main_queue(),{
+        className.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(classCell)
+        }
+    })
     
     
     return classCell

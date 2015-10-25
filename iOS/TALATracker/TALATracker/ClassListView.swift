@@ -39,4 +39,9 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          return generateInitialCell(tableView, indexPath: indexPath)
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        sendFirstPOST { () -> () in
+            print("Sent")
+        }
+    }
 }
