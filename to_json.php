@@ -23,6 +23,11 @@
  * 
  */
 
+//Reqires php and the mysql extension to be installed--to install, run
+//sudo apt-get install php5-cli
+//and
+//sudo apt-get install php5-mysql
+
 function course($x) {
 
 	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
@@ -48,10 +53,46 @@ function name($x) {
 	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 	echo json_encode($array), "\n";
+
+}
+
+function insertClass($x) {
+
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "insert into `Classes` (`Classname`) values ('$x');";
+	$db->exec($sql);
+}
+
+function insertTA($x) {
+
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "insert into `TAs` (`Name`) values ('$x');";
+	$db->exec($sql);
+}
+
+function insertSession($a, $b, $c, $d, $e) {
+
+//Variable meanings: a = TAID, b = ClassID, c = Day, d = Time, e = Location
+
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "insert into `Sessions` (`TAID`, `ClassID`, `Day`, `Time`, `Location`) values ((select ID from TAs where Name like '$a'), (select ID from Classes where Classname like '$b'), '$c', '$d', '$e');";
+	$db->exec($sql);
+
 }
 
 course("CSCI");
 
 name("Firstname Lastname");
+
+insertClass("MATH 1000");
+
+insertTA("Bob");
+
+insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
+
+name("Bob");
 
 ?>
