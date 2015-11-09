@@ -1,0 +1,6 @@
+framework module Pods_TALATracker {
+  umbrella header "Pods-TALATracker-umbrella.h"
+
+  export *
+  module * { export * }
+}

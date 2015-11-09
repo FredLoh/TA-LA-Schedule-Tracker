@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9052" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9040"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Class List View-->
@@ -17,56 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d0B-sb-rVu">
-                                <rect key="frame" x="0.0" y="206" width="600" height="394"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="394" id="V3f-J8-adr"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClassListCell" id="jfp-y6-GAF" customClass="ClassListCell" customModule="TALATracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jfp-y6-GAF" id="tYT-FL-Sf8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ks-rU-Bvi">
-                                                    <rect key="frame" x="8" y="11" width="91" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLm-wA-7ay">
-                                                    <rect key="frame" x="107" y="11" width="49" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="leadingMargin" secondItem="9ks-rU-Bvi" secondAttribute="leading" id="77X-Pe-dtE"/>
-                                                <constraint firstItem="9ks-rU-Bvi" firstAttribute="top" secondItem="tYT-FL-Sf8" secondAttribute="topMargin" constant="3" id="Ukd-CY-Ze0"/>
-                                                <constraint firstItem="uLm-wA-7ay" firstAttribute="leading" secondItem="9ks-rU-Bvi" secondAttribute="trailing" constant="8" id="axu-Fl-nUA"/>
-                                                <constraint firstItem="uLm-wA-7ay" firstAttribute="top" secondItem="tYT-FL-Sf8" secondAttribute="topMargin" constant="3" id="whh-g0-NvO"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="className" destination="9ks-rU-Bvi" id="yFl-Qb-8gX"/>
-                                            <outlet property="classNumber" destination="uLm-wA-7ay" id="PWo-xF-S7M"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="i7o-Yj-ib6"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4PD-h1-TjS"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TA LA TRACKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al3-C0-XUF">
                                 <rect key="frame" x="238" y="20" width="124" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="64F-op-iKy"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -74,16 +26,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Al3-C0-XUF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fcv-T7-vru"/>
-                            <constraint firstAttribute="trailing" secondItem="d0B-sb-rVu" secondAttribute="trailing" id="JAB-ik-BH7"/>
-                            <constraint firstItem="d0B-sb-rVu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YNd-wi-MVj"/>
-                            <constraint firstItem="d0B-sb-rVu" firstAttribute="centerX" secondItem="Al3-C0-XUF" secondAttribute="centerX" id="dW6-Lg-OA4"/>
-                            <constraint firstItem="d0B-sb-rVu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="muZ-Ij-KiD"/>
+                            <constraint firstItem="Al3-C0-XUF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="koh-qE-QEk"/>
+                            <constraint firstItem="Al3-C0-XUF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uIF-ai-U5c"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="d0B-sb-rVu" id="qqF-ZB-dJh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

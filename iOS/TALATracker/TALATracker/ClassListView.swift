@@ -8,15 +8,21 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var tableView: UITableView!
+    let tableView = UITableView()
 
     
     override func viewDidLoad() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
+        tableView.snp_makeConstraints { (make) -> Void in
+            make.bottom.left.right.equalTo(self.view)
+            make.top.equalTo(self.view).offset(80)
+        }
         BaseJSONGet { () -> () in
-            print("SUCCESS")
-            print("Print")
             self.tableView.reloadData()
         }
         
@@ -30,12 +36,6 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return TestArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         let classCell: ClassListCell = tableView.dequeueReusableCellWithIdentifier("ClassListCell", forIndexPath: indexPath) as! ClassListCell
-        
-        classCell.className.text = TestArray[indexPath.row]["class"] as? String
-        classCell.classNumber.text = TestArray[indexPath.row]["class-num"] as? String
-        
-        
-        return classCell
+         return generateInitialCell(tableView, indexPath: indexPath)
     }
 }
