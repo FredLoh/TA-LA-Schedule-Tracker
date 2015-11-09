@@ -1,10 +1,9 @@
---This is the SQL file detailing the structure of the database! It is worth noting that the values this file inserts into the database are junk data intended for testing, and should probably be removed at some point in the future once testing is further along.
-
+/*This is the SQL file detailing the structure of the database! It is worth noting that the values this file inserts into the database are junk data intended for testing, and should probably be removed at some point in the future once testing is further along.*/
 CREATE TABLE IF NOT EXISTS `TAs` (
 `ID` int(1) NOT NULL auto_increment,
 `Name` varchar(40) NOT NULL,
 PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 INSERT INTO `TAs` (`Name`) VALUES
 ('Firstname Lastname'),
