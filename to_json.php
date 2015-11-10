@@ -83,16 +83,42 @@ function insertSession($a, $b, $c, $d, $e) {
 
 }
 
-course("CSCI");
+function deleteAll($x){
 
-name("Firstname Lastname");
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "delete from Sessions
+where TAID in (select ID from TAs where TAs.Name = '$x') or ClassID in (select ID from Classes where Classes.Classname = '$x');";
+	$db->exec($sql);
+}
 
-insertClass("MATH 1000");
+function deleteTA($x){
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "delete from TAs
+where Name = '$x';";
+	$db->exec($sql);
+}
 
-insertTA("Bob");
+function deleteClass($x){
+	$db = new PDO('mysql:host=localhost;dbname=json_test;charset=utf8', 'root', 'user');
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "delete from Classes
+where Classname = '$x';";
+	$db->exec($sql);
+}
+//course("CSCI");
 
-insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
+//name("Firstname Lastname");
 
-name("Bob");
+//insertClass("MATH 1000");
+
+//insertTA("Bob");
+
+//insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
+
+//name("Bob");
+
+//deleteAll("Bob");
 
 ?>

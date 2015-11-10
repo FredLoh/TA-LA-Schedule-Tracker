@@ -45,5 +45,31 @@ class to_json_test extends PHPUnit_Framework_TestCase
 ');
 		course("JPNS");
 	}
+
+	public function testInsertFunctions()
+	{
+		//Tests the three insert functions. For the final insert
+		//session function to work, insert class and insert ta must
+		//work beforehand. Finally, check if they inserted properly
+		//by querying for the inserted data.
+		insertClass("MATH 1000");
+		insertTA("Bob");
+		insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
+		$this->expectOutputString('[{"Name":"Bob","Classname":"MATH 1000","Day":"M","Time":"12:00 PM - 2:00 PM","Location":"ECCR 1234"}]
+');
+		name("Bob");
+	}
+
+	public function testDeleteFunction()
+	{
+		//Tests the delete functions, by clearing out the data inserted
+		//in the previous test.
+		deleteAll("Bob");
+		deleteTA("Bob");
+		deleteClass("MATH 1000");
+		$this->expectOutputString('[]
+');
+		name("Bob");
+	}
 }
 ?>
