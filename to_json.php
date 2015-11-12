@@ -117,7 +117,7 @@ where Classname = '$x';";
 
 //insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
 
-//name("Bob");
+//name($_POST["name"]);
 
 //deleteAll("Bob");
 
