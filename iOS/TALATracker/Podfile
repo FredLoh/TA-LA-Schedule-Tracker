@@ -1,0 +1,15 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'TALATracker' do
+    pod 'SnapKit'
+end
+
+target 'TALATrackerTests' do
+
+end
+
+target 'TALATrackerUITests' do
+
+end
+
