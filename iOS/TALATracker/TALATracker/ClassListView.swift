@@ -18,6 +18,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
+        
         tableView.snp_makeConstraints { (make) -> Void in
             make.bottom.left.right.equalTo(self.view)
             make.top.equalTo(self.view).offset(80)

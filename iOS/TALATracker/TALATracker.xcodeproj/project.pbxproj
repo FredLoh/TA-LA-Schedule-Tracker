@@ -18,6 +18,7 @@
 		DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E6B1BC1CA6400B63F2A /* BaseJSON.swift */; };
 		DB8E7E701BC1CC7A00B63F2A /* ClassListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */; };
 		DB8E7E721BC1CF5200B63F2A /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */; };
+		DBB0AD001BF684DC004CE574 /* POSTRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB0ACFF1BF684DC004CE574 /* POSTRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		DB8E7E6B1BC1CA6400B63F2A /* BaseJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseJSON.swift; sourceTree = "<group>"; };
 		DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListView.swift; sourceTree = "<group>"; };
 		DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		DBB0ACFF1BF684DC004CE574 /* POSTRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POSTRequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				DB8E7E6B1BC1CA6400B63F2A /* BaseJSON.swift */,
+				DBB0ACFF1BF684DC004CE574 /* POSTRequests.swift */,
 			);
 			name = JSONRequets;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3302A31BF1437200E8238B /* CellGeneration.swift in Sources */,
+				DBB0AD001BF684DC004CE574 /* POSTRequests.swift in Sources */,
 				DB8E7E3D1BC1CA3400B63F2A /* AppDelegate.swift in Sources */,
 				DB8E7E701BC1CC7A00B63F2A /* ClassListView.swift in Sources */,
 				DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */,
