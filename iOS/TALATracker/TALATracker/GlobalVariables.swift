@@ -8,4 +8,12 @@
 
 import Foundation
 
+struct JSONReturn {
+    var name: String?
+    var className: String?
+    var day: String?
+    var time: String?
+    var location: String?
+}
+
 var TestArray : NSArray = []

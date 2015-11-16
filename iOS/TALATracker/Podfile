@@ -3,6 +3,7 @@ use_frameworks!
 
 target 'TALATracker' do
     pod 'SnapKit'
+    pod 'SwiftyJSON'
 end
 
 target 'TALATrackerTests' do
