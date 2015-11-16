@@ -12,17 +12,18 @@ import SnapKit
 
 class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let tableView = UITableView()
-
+    
     
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
-        
-        tableView.snp_makeConstraints { (make) -> Void in
-            make.bottom.left.right.equalTo(self.view)
-            make.top.equalTo(self.view).offset(80)
-        }
+        dispatch_async(dispatch_get_main_queue(),{
+            self.tableView.snp_makeConstraints { (make) -> Void in
+                make.bottom.left.right.equalTo(self.view)
+                make.top.equalTo(self.view).offset(80)
+            }
+        })
         BaseJSONGet { () -> () in
             self.tableView.reloadData()
         }
@@ -37,6 +38,11 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return TestArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         return generateInitialCell(tableView, indexPath: indexPath)
+        return generateInitialCell(tableView, indexPath: indexPath)
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        sendFirstPOST { () -> () in
+            print("Sent")
+        }
     }
 }

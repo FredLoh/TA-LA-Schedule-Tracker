@@ -29,7 +29,7 @@ func BaseJSONGet(success:()->()) {
                 return
             }
             TestArray = (jsonDict["classes"] as? NSMutableArray)!
-            print(TestArray)
+//            print(TestArray)
             success()
         }
     }
