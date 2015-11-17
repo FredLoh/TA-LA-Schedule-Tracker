@@ -14,6 +14,12 @@ struct JSONReturn {
     var day: String?
     var time: String?
     var location: String?
+    
+    var dateTime : String {
+        get {
+            return day! + " " + time!
+        }
+    }
 }
 
 var TestArray : NSArray = []

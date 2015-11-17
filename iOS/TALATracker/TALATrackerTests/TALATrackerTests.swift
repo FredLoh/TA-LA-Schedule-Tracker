@@ -20,7 +20,7 @@ class TALATrackerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+        
     func tesPOSTFunc() {
         var testArray = [JSONReturn]()
         sendFirstPOST(&testArray) { () -> () in
@@ -40,6 +40,7 @@ class TALATrackerTests: XCTestCase {
         XCTAssertEqual(json.location, "CSEL")
         XCTAssertEqual(json.name, "Fred")
         XCTAssertEqual(json.time, "12:00")
+        XCTAssertEqual(json.dateTime, "Mon 12:00", "Date time should be equal to \"Mon 12:00\".")
     }
     
     func testInitialJSONAndCell() {
