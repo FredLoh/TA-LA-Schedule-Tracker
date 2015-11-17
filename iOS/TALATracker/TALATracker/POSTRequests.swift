@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-func sendFirstPOST(success:()->())->[JSONReturn] {
+
+func sendFirstPOST(success:()->())->Bool {
     let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php"
-    var infoArray = [JSONReturn]()
     guard let getURL = NSURL(string: urlString) as NSURL? else {
-        return infoArray
+        return false
     }
     let request:NSMutableURLRequest = NSMutableURLRequest(URL:getURL)
     request.HTTPMethod = "POST"
@@ -22,7 +22,6 @@ func sendFirstPOST(success:()->())->[JSONReturn] {
     let bodyData = "type=class&phrase="
     request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-        
         (response, data, error) in
         
         if data != nil {
@@ -41,5 +40,5 @@ func sendFirstPOST(success:()->())->[JSONReturn] {
         }
         success()
     }
-    return infoArray
+    return true
 }

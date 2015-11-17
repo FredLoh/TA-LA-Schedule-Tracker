@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func BaseJSONGet(success:()->()) {
+func BaseJSONGet(inout TestArray: NSArray,success:()->()) {
     let urlString = "https://raw.githubusercontent.com/FredLoh/SoftwareEngineering3308/master/testJson.json"
     let getURL = NSURL(string: urlString)
     let session = NSURLSession.sharedSession()
@@ -29,7 +29,7 @@ func BaseJSONGet(success:()->()) {
                 return
             }
             TestArray = (jsonDict["classes"] as? NSMutableArray)!
-//            print(TestArray)
+//            print(TestArra y)
             success()
         }
     }
