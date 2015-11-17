@@ -44,11 +44,11 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return TestArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return generateInitialCell(tableView, indexPath: indexPath)
+        return generateInitialCell(TestArray, tableView: tableView, indexPath: indexPath)
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        sendFirstPOST { () -> () in
-                
+        sendFirstPOST(&infoArray) { () -> () in
+            
         }
     }
 }

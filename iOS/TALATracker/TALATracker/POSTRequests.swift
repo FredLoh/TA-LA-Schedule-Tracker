@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 
 
-func sendFirstPOST(success:()->())->Bool {
+func sendFirstPOST(inout infoArray: [JSONReturn],success:()->())->Bool {
     let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php"
     guard let getURL = NSURL(string: urlString) as NSURL? else {
         return false
