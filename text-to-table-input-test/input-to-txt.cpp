@@ -28,9 +28,11 @@ Make ID's
 make tests
 
 +++++++++// Known issues \\+++++++++
+// FIXED
 p) Each time the program runs the .txt files are completely overwritten...
 s) Could do a check to see if the file already exists and if so just add to it
 
+// FIXED
 p) when switching from one table to another if you switch back to one you have already
 input data for, it will overwrite the entire .txt file...
 s) fixing the first problem should fix this one...
@@ -54,13 +56,27 @@ using namespace std;
 // This function allow for entering names of TA/LAs by First Last name into a text file
 // Multiple entries may be made and the user will be prompted until they elect
 // not to add any more
+
+bool fileCheck(const char *fileName)
+{
+    ifstream infile(fileName);
+    return infile.good();
+}
+
 void TAs()
 {
     string a;
     bool donea = false;
     string yna;
     ofstream myfile;
-    myfile.open ("TAs.txt");
+    bool fileAvailable = fileCheck("TAs.txt");
+    if (fileAvailable == false) {
+        myfile.open ("TAs.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("TAs.txt", std::ios_base::app);
+        myfile << "\n";
+    }
     cout << "What is the TA/LA's Name? (First Last) (1 at a time please) : " << endl;
     getline(cin, a);
     myfile << a;
@@ -110,7 +126,14 @@ void Classname()
     bool doneb = false;
     string ynb;
     ofstream myfile;
-    myfile.open ("Classname.txt");
+    bool fileAvailable = fileCheck("Classname.txt");
+    if (fileAvailable == false) {
+        myfile.open ("Classname.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("Classname.txt", std::ios_base::app);
+        myfile << "\n";
+    }
     cout << "What is their Class Name? (please only enter 1 class at a time) : "
     << endl << "Also please format as (CSCI 3308: Methods + Tools)";
     getline(cin, b);
@@ -165,7 +188,14 @@ void Sessions()
     bool donec = false;
     string ync;
     ofstream myfile;
-    myfile.open ("Sessions.txt");
+    bool fileAvailable = fileCheck("Sessions.txt");
+    if (fileAvailable == false) {
+        myfile.open ("Sessions.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("Sessions.txt", std::ios_base::app);
+        myfile << "\n";
+    }
     cout << "What is their TA ID? : " << endl;
     getline(cin, c1);
     cout << "What is their Class ID? : " << endl;
