@@ -21,6 +21,5 @@ struct JSONReturn {
         }
     }
 }
-
 var TestArray : NSArray = []
 var infoArray = [JSONReturn]()

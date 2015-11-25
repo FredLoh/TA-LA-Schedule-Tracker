@@ -13,7 +13,7 @@ import SnapKit
 class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let backView = UIView()
     let tableView = UITableView()
-
+    
     
     override func viewDidLoad() {
         self.view.addSubview(backView)
@@ -30,9 +30,11 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 make.top.equalTo(self.backView).offset(80)
             }
         })
-        BaseJSONGet(&TestArray) { () -> () in
+        
+        sendFirstPOST() { () -> () in
             self.tableView.reloadData()
         }
+        
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -41,14 +43,13 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TestArray.count
+        return infoArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return generateInitialCell(TestArray, tableView: tableView, indexPath: indexPath)
+        return generateInitialCell(&infoArray, tableView: tableView, indexPath: indexPath)
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        sendFirstPOST(&infoArray) { () -> () in
-            
-        }
+        let input = infoArray[indexPath.row].className![5...8]
+        sendClassPOST(input)
     }
 }

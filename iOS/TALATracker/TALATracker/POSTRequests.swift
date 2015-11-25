@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import Alamofire
 
-
-func sendFirstPOST(inout infoArray: [JSONReturn],success:()->())->Bool {
+func sendFirstPOST(success:()->())->Bool {
     let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php"
     guard let getURL = NSURL(string: urlString) as NSURL? else {
         return false
@@ -41,4 +41,23 @@ func sendFirstPOST(inout infoArray: [JSONReturn],success:()->())->Bool {
         success()
     }
     return true
+}
+
+func sendClassPOST(input: String) {
+    let parameters = [
+        "type": "class",
+        "phrase": "\(input)",
+    ]
+    
+    Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
+        .response { request, response, data, error in
+            if error != nil {
+                print(error)
+            } else {
+                if data != nil {
+                    let json = JSON(data: data!)
+                    print(json)
+                }
+            }
+    }
 }

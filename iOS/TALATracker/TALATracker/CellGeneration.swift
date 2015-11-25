@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-func generateInitialCell(array: NSArray, tableView: UITableView, indexPath: NSIndexPath)->UITableViewCell {
+func generateInitialCell(inout array: [JSONReturn], tableView: UITableView, indexPath: NSIndexPath)->UITableViewCell {
     
     let classCell = UITableViewCell(style: .Default, reuseIdentifier: "articleCell")
     let className = UILabel()
     
     classCell.addSubview(className)
     
-    guard let classN = array[indexPath.row]["class"] as? String else {
+    guard let classN = array[indexPath.row].className else {
         return classCell
     }
     

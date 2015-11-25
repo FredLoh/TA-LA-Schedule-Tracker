@@ -1,37 +1,24 @@
+////
+////  BaseJSON.swift
+////  TALATracker
+////
+////  Created by Frederik Lohner on 4/Oct/15.
+////  Copyright © 2015 CSCI3308. All rights reserved.
+////
 //
-//  BaseJSON.swift
-//  TALATracker
-//
-//  Created by Frederik Lohner on 4/Oct/15.
-//  Copyright © 2015 CSCI3308. All rights reserved.
-//
-
-import Foundation
-import UIKit
-
-func BaseJSONGet(inout TestArray: NSArray,success:()->()) {
-    let urlString = "https://raw.githubusercontent.com/FredLoh/SoftwareEngineering3308/master/testJson.json"
-    let getURL = NSURL(string: urlString)
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithURL(getURL!) {
-        (data, response, error) -> Void in
-        if error != nil {
-            print(error?.localizedDescription)
-        } else {
-            guard let data = data, dataString = NSString(data: data, encoding: NSISOLatin1StringEncoding) else {
-                return
-            }
-            guard let dataFromStringUTF = dataString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) else {
-                return
-            }
-            //            let dataString2 = NSString(data: dataFromStringUTF!, encoding: NSUTF8StringEncoding)
-            guard let jsonDict : NSMutableDictionary = try? NSJSONSerialization.JSONObjectWithData(dataFromStringUTF, options: NSJSONReadingOptions.MutableContainers) as! NSMutableDictionary else {
-                return
-            }
-            TestArray = (jsonDict["classes"] as? NSMutableArray)!
-//            print(TestArra y)
-            success()
-        }
-    }
-    task.resume()
-}
+//import Foundation
+//import UIKit
+//import Alamofire
+//func BaseJSONGet(success:()->()) {
+//    let url = 
+//    Alamofire.request(.GET, url).validate().responseJSON { response in
+//        switch response.result {
+//        case .Success:
+//            if let value = response.result.value {
+//                let json = JSON(value)
+//                print("JSON: \(json)")
+//            }
+//        case .Failure(let error):
+//            print(error)
+//        }
+//    }}
