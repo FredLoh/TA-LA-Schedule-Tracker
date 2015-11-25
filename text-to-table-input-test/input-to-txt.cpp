@@ -23,15 +23,16 @@ created in the current directory as the files listed above and then can be
 used to enter data into the tables en masse via the above prompts
 
 +++++++++// To Do \\+++++++++
-Finish Sessions
 Fix Issues below
 Make ID's
 make tests
 
 +++++++++// Known issues \\+++++++++
+// FIXED
 p) Each time the program runs the .txt files are completely overwritten...
 s) Could do a check to see if the file already exists and if so just add to it
 
+// FIXED
 p) when switching from one table to another if you switch back to one you have already
 input data for, it will overwrite the entire .txt file...
 s) fixing the first problem should fix this one...
@@ -52,6 +53,15 @@ other departments that begin with c like coen
 
 using namespace std;
 
+// This function allow for entering names of TA/LAs by First Last name into a text file
+// Multiple entries may be made and the user will be prompted until they elect
+// not to add any more
+
+bool fileCheck(const char *fileName)
+{
+    ifstream infile(fileName);
+    return infile.good();
+}
 
 void TAs()
 {
@@ -59,7 +69,14 @@ void TAs()
     bool donea = false;
     string yna;
     ofstream myfile;
-    myfile.open ("TAs.txt");
+    bool fileAvailable = fileCheck("TAs.txt");
+    if (fileAvailable == false) {
+        myfile.open ("TAs.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("TAs.txt", std::ios_base::app);
+        myfile << "\n";
+    }
     cout << "What is the TA/LA's Name? (First Last) (1 at a time please) : " << endl;
     getline(cin, a);
     myfile << a;
@@ -101,13 +118,22 @@ void TAs()
     myfile.close();
 }
 
+// Function that writes the names of classes into a text file
+// Allows user to enter in multiple classes and will prompt until they are done
 void Classname()
 {
     string b;
     bool doneb = false;
     string ynb;
     ofstream myfile;
-    myfile.open ("Classname.txt");
+    bool fileAvailable = fileCheck("Classname.txt");
+    if (fileAvailable == false) {
+        myfile.open ("Classname.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("Classname.txt", std::ios_base::app);
+        myfile << "\n";
+    }
     cout << "What is their Class Name? (please only enter 1 class at a time) : "
     << endl << "Also please format as (CSCI 3308: Methods + Tools)";
     getline(cin, b);
@@ -150,10 +176,85 @@ void Classname()
     myfile.close();
 }
 
-// Still need to finish this
+// Function that prints user entered Sessions into a text file for later input into mySQL tables
+// Allows for multiple inputs
 void Sessions()
 {
-    //int c;
+    string c1;
+    string c2;
+    string c3;
+    string c4;
+    string c5;
+    bool donec = false;
+    string ync;
+    ofstream myfile;
+    bool fileAvailable = fileCheck("Sessions.txt");
+    if (fileAvailable == false) {
+        myfile.open ("Sessions.txt");
+    }
+    else if (fileAvailable == true) {
+        myfile.open("Sessions.txt", std::ios_base::app);
+        myfile << "\n";
+    }
+    cout << "What is their TA ID? : " << endl;
+    getline(cin, c1);
+    cout << "What is their Class ID? : " << endl;
+    getline(cin, c2);
+    cout << "What are the days? : " << endl;
+    getline(cin, c3);
+    cout << "What are the times? : " << endl;
+    getline(cin, c4);
+    cout << "What is the location? : " << endl;
+    getline(cin, c5);
+    myfile << c1 << "\t" << c2 << "\t" << c3 << "\t" << c4 << "\t" << c5;
+    for (int ic = 0; donec == false; ic++) {
+        cout << "Would you like to enter another session? : "
+        << endl << "input must be 'y' or 'n' ";
+        getline(cin, ync);
+        if (ync == "y"){
+            string cc1;
+            string cc2;
+            string cc3;
+            string cc4;
+            string cc5;
+            cout << "What is their TA ID? : " << endl;
+            getline(cin, cc1);
+            cout << "What is their Class ID? : " << endl;
+            getline(cin, cc2);
+            cout << "What are the days? : " << endl;
+            getline(cin, cc3);
+            cout << "What are the times? : " << endl;
+            getline(cin, cc4);
+            cout << "What is the location? : " << endl;
+            getline(cin, cc5);
+            myfile << "\n" << cc1 << "\t" << cc2 << "\t" << cc3 << "\t" << cc4 << "\t" << cc5;
+            donec = false;
+        }
+        else if (ync == "n"){
+            string nextc;
+            bool finalc = false;
+            do {
+                cout << "Would you like to choose a different Table to make data for? (y/n)" << endl;
+                getline(cin, nextc);
+                if (nextc == "y"){
+                    donec = true;
+                    finalc = true;
+                }
+                else if (nextc == "n"){
+                    myfile.close();
+                    exit(0);
+                }
+                else {
+                    cout << "Error : enter lower case 'y' or 'n'" << endl;
+                }
+            } while (finalc == false);
+        }
+        else {
+            cout << "Error : enter lower case 'y' or 'n'" << endl;
+            donec = false;
+        }
+    }
+    myfile.close();
 }
 
 int main()
