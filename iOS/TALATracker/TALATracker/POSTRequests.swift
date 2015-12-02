@@ -56,7 +56,18 @@ func sendClassPOST(input: String) {
             } else {
                 if data != nil {
                     let json = JSON(data: data!)
-                    print(json)
+                    for var i=0;i>json.count;i++ {
+                        guard let name = json[i]["Name"].string,
+                            let className = json[i]["Classname"].string,
+                            let day = json[i]["Day"].string,
+                            let time = json[i]["Time"].string,
+                            let location = json[i]["Location"].string else {
+                                return
+                        }
+                        let newEntry = JSONReturn(name: name, className: className, day: day, time: time, location: location)
+                        timesArray.append(newEntry)
+                        print(timesArray)
+                    }
                 }
             }
     }

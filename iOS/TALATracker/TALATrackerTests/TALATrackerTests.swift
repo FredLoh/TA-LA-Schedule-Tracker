@@ -24,7 +24,7 @@ class TALATrackerTests: XCTestCase {
         
     func tesPOSTFunc() {
         var testArray = [JSONReturn]()
-        sendFirstPOST(&testArray) { () -> () in
+        sendFirstPOST() { () -> () in
             XCTAssertNotEqual(testArray.count, 0)
         }
     }

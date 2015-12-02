@@ -23,6 +23,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.scrollEnabled = false
         backView.addSubview(tableView)
         dispatch_async(dispatch_get_main_queue(),{
             self.tableView.snp_makeConstraints { (make) -> Void in
@@ -34,8 +35,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         sendFirstPOST() { () -> () in
             self.tableView.reloadData()
         }
-        
-        
+
         tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
@@ -51,5 +51,6 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let input = infoArray[indexPath.row].className![5...8]
         sendClassPOST(input)
+        performSegueWithIdentifier("classDetailsSegue", sender: self)
     }
 }

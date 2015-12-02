@@ -8,10 +8,22 @@
         <!--Class List View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ClassListView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="BYZ-38-t0r" customClass="ClassListView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Nn4-g1-TZu" kind="show" identifier="classDetailsSegue" id="QiH-nc-uoP"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="278"/>
+            <point key="canvasLocation" x="-184" y="405"/>
+        </scene>
+        <!--Class Details View-->
+        <scene sceneID="8Tb-W0-MTB">
+            <objects>
+                <viewController title="Class Details View" id="Nn4-g1-TZu" customClass="ClassDetailsView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9M3-Em-EmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528" y="405"/>
         </scene>
     </scenes>
 </document>

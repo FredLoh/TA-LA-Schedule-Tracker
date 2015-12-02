@@ -23,3 +23,5 @@ struct JSONReturn {
 }
 var TestArray : NSArray = []
 var infoArray = [JSONReturn]()
+var classesArray = [JSONReturn]()
+var timesArray = [JSONReturn]()
