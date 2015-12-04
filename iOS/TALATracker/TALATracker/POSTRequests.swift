@@ -24,7 +24,7 @@ func sendFirstPOST(success:()->())->Bool {
     let request:NSMutableURLRequest = NSMutableURLRequest(URL:getURL)
     request.HTTPMethod = "POST"
     /* POST format appears to be as follows, type=(type)&name=(name */
-    let bodyData = "type=class&phrase="
+    let bodyData = "type=getClasses&phrase1=&phrase2="
     request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding)
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
         (response, data, error) in
@@ -35,16 +35,14 @@ func sendFirstPOST(success:()->())->Bool {
             let json = JSON(data: data!)
             infoArray.removeAll()
             for var i=0;i<json.count;i++ {
-                guard let name = json[i]["Name"].string,
-                    let className = json[i]["Classname"].string,
-                    let day = json[i]["Day"].string,
-                    let time = json[i]["Time"].string,
-                    let location = json[i]["Location"].string else {
+                guard let name = json[i]["Classname"].string else {
                         print("Error while parsing first POST")
                         return
                 }
-                let newEntry = JSONReturn(name: name, className: className, day: day, time: time, location: location)
-                infoArray.append(newEntry)
+                let newEntry = Classes(className: name)
+                classesArray.append(newEntry)
+                print(classesArray)
+                print(classesArray.count)
             }
         }
         success()
@@ -53,8 +51,9 @@ func sendFirstPOST(success:()->())->Bool {
 }
 func sendClassPOST(input: String, success:()->()) {
     let parameters = [
-        "type": "class",
-        "phrase": "\(input)",
+        "type": "ClassTAs",
+        "phrase1": "\(input)",
+        "phrase2": "",
     ]
     print(input)
     Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
@@ -64,20 +63,18 @@ func sendClassPOST(input: String, success:()->()) {
             } else {
                 if data != nil {
                     let json = JSON(data: data!)
-                    timesArray.removeAll()
+                    print(json)
+                    TAArray.removeAll()
                     for var i=0;i<json.count;i++ {
-                        guard let name = json[i]["Name"].string,
-                            let className = json[i]["Classname"].string,
-                            let day = json[i]["Day"].string,
-                            let time = json[i]["Time"].string,
-                            let location = json[i]["Location"].string else {
+                        guard let name = json[i]["Name"].string else {
                                 print("returning")
                                 return
                         }
-                        let newEntry = JSONReturn(name: name, className: className, day: day, time: time, location: location)
-                        timesArray.append(newEntry)
+                        let newEntry = TAS(name: name)
+                        print(newEntry)
+                        TAArray.append(newEntry)
                     }
-                    print(timesArray)
+                    print(TAArray)
                     success()
                 }
             }

@@ -8,6 +8,13 @@
 
 import Foundation
 
+struct Classes {
+    var className: String?
+}
+struct TAS {
+    var name: String?
+}
+
 struct JSONReturn {
     var name: String?
     var className: String?
@@ -23,5 +30,6 @@ struct JSONReturn {
 }
 var TestArray : NSArray = []
 var infoArray = [JSONReturn]()
-var classesArray = [JSONReturn]()
+var classesArray = [Classes]()
+var TAArray = [TAS]()
 var timesArray = [JSONReturn]()

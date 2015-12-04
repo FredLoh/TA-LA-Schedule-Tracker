@@ -14,12 +14,28 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     let backView = UIView()
     let tableView = UITableView()
     let segmentedView = ListenRecordSegmentedController()
+    var sideSwipeRecognizer: UISwipeGestureRecognizer?
     
+    func swipeLeft(recognizer : UISwipeGestureRecognizer) {
+        if self.segmentedView.selectedIndex == 0 {
+            self.segmentedView.selectedIndex = 1
+            self.sideSwipeRecognizer?.direction = .Right
+            
+        } else {
+            self.segmentedView.selectedIndex = 0
+            self.sideSwipeRecognizer?.direction = .Left
+        }
+        self.segmentedView.displayNewSelectedIndex()
+        segmentedView.sendAction("handleSingleTap:", to: nil, forEvent: nil)
+    }
+
     
     override func viewDidLoad() {
         self.view.addSubview(backView)
 //        let topBar = generateTopBar(backView)
-        
+        sideSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
+        sideSwipeRecognizer!.direction = .Left
+        self.view.addGestureRecognizer(sideSwipeRecognizer!)
         backView.addSubview(segmentedView)
         segmentedView.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(backView)
@@ -56,13 +72,13 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return infoArray.count
+        return classesArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return generateInitialCell(&infoArray, tableView: tableView, indexPath: indexPath)
+        return generateInitialCell(&classesArray, tableView: tableView, indexPath: indexPath)
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let input = infoArray[indexPath.row].className![5...8]
+        let input = classesArray[indexPath.row].className![5...8]
         sendClassPOST(input) { () -> () in
             dispatch_async(dispatch_get_main_queue(),{
                 self.performSegueWithIdentifier("classDetailsSegue", sender: self)

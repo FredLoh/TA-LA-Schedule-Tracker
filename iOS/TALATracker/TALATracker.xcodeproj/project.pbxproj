@@ -15,6 +15,7 @@
 		DB671F721C1227DD005B0119 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB671F711C1227DD005B0119 /* TopBar.swift */; };
 		DB671F741C122B2F005B0119 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB671F731C122B2F005B0119 /* SelectorView.swift */; };
 		DB671F761C122B45005B0119 /* ColorAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB671F751C122B45005B0119 /* ColorAndFonts.swift */; };
+		DB671F781C12320B005B0119 /* TADetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB671F771C12320B005B0119 /* TADetailsView.swift */; };
 		DB8E7E3D1BC1CA3400B63F2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E7E3C1BC1CA3400B63F2A /* AppDelegate.swift */; };
 		DB8E7E421BC1CA3400B63F2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB8E7E401BC1CA3400B63F2A /* Main.storyboard */; };
 		DB8E7E441BC1CA3400B63F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB8E7E431BC1CA3400B63F2A /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		DB671F711C1227DD005B0119 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		DB671F731C122B2F005B0119 /* SelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
 		DB671F751C122B45005B0119 /* ColorAndFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorAndFonts.swift; sourceTree = "<group>"; };
+		DB671F771C12320B005B0119 /* TADetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TADetailsView.swift; sourceTree = "<group>"; };
 		DB8E7E391BC1CA3400B63F2A /* TALATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TALATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8E7E3C1BC1CA3400B63F2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB8E7E411BC1CA3400B63F2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				DB8E7E3C1BC1CA3400B63F2A /* AppDelegate.swift */,
 				DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */,
 				DB405E691C0E39E200AEB73B /* ClassDetailsView.swift */,
+				DB671F771C12320B005B0119 /* TADetailsView.swift */,
 				DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */,
 				DB8E7E401BC1CA3400B63F2A /* Main.storyboard */,
 				DB8E7E431BC1CA3400B63F2A /* Assets.xcassets */,
@@ -399,6 +402,7 @@
 				DB11F6091C063A5B0089CC2A /* String.swift in Sources */,
 				DB405E681C0E2D2700AEB73B /* File.swift in Sources */,
 				DB405E6A1C0E39E200AEB73B /* ClassDetailsView.swift in Sources */,
+				DB671F781C12320B005B0119 /* TADetailsView.swift in Sources */,
 				DB671F721C1227DD005B0119 /* TopBar.swift in Sources */,
 				DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */,
 				DB8E7E721BC1CF5200B63F2A /* GlobalVariables.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-func generateInitialCell(inout array: [JSONReturn], tableView: UITableView, indexPath: NSIndexPath )->UITableViewCell {
+func generateInitialCell(inout array: [Classes], tableView: UITableView, indexPath: NSIndexPath )->UITableViewCell {
     
     let classCell = UITableViewCell(style: .Default, reuseIdentifier: "articleCell")
     let className = UILabel()
@@ -21,13 +21,6 @@ func generateInitialCell(inout array: [JSONReturn], tableView: UITableView, inde
         return classCell
     }
     
-    for classes in classesArray {
-        if classes.className == classN {
-            return classCell
-        }
-    }
-    
-    classesArray.append(array[indexPath.row])
     className.text = classN
     className.adjustsFontSizeToFitWidth = true
     className.textAlignment = .Center
