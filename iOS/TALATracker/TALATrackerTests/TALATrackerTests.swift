@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import TALATracker
+import TALATracker
 
 class TALATrackerTests: XCTestCase {
     
@@ -23,8 +24,8 @@ class TALATrackerTests: XCTestCase {
         
     func tesPOSTFunc() {
         var testArray = [JSONReturn]()
-        sendFirstPOST(&testArray) { () -> () in
-            XCTAssertNotNil(testArray)
+        sendFirstPOST() { () -> () in
+            XCTAssertNotEqual(testArray.count, 0)
         }
     }
     
@@ -43,12 +44,7 @@ class TALATrackerTests: XCTestCase {
         XCTAssertEqual(json.dateTime, "Mon 12:00", "Date time should be equal to \"Mon 12:00\".")
     }
     
-    func testInitialJSONAndCell() {
-        var testArray = []
-        BaseJSONGet(&testArray) { () -> () in
-            XCTAssertNotNil(testArray)
-        }
-    }
+
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

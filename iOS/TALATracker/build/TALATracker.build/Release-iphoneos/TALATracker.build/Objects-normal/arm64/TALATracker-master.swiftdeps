@@ -1,0 +1,13 @@
+version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
+options: "3f4cca7700447083fa58300269bb0a77"
+build_time: [502573050, 173620000]
+inputs:
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/ClassDetailsView.swift": !dirty [502316983, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/POSTRequests.swift": !dirty [502573044, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/AppDelegate.swift": !dirty [497913966, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/GlobalVariables.swift": !dirty [502318102, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/ClassListView.swift": !dirty [502570751, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/CellGeneration.swift": !dirty [502418229, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/File.swift": !dirty [502313914, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/String.swift": !dirty [501792605, 0]
+  "/Users/FredLoh/Dropbox/CU Boulder 2015 Fall/Software Development/Project/SoftwareEngineering3308/iOS/TALATracker/TALATracker/BaseJSON.swift": !dirty [501790570, 0]

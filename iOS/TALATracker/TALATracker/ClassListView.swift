@@ -13,42 +13,60 @@ import SnapKit
 class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let backView = UIView()
     let tableView = UITableView()
-
+    let segmentedView = ListenRecordSegmentedController()
+    
     
     override func viewDidLoad() {
         self.view.addSubview(backView)
+//        let topBar = generateTopBar(backView)
+        
+        backView.addSubview(segmentedView)
+        segmentedView.snp_makeConstraints { (make) -> Void in
+            make.left.right.equalTo(backView)
+            make.top.equalTo(backView).offset(20)
+            make.height.equalTo(50)
+        }
+
         backView.backgroundColor = UIColor.whiteColor()
         backView.snp_makeConstraints { (make) -> Void in
             make.left.top.right.bottom.equalTo(self.view)
         }
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .None
+        tableView.scrollEnabled = false
         backView.addSubview(tableView)
         dispatch_async(dispatch_get_main_queue(),{
             self.tableView.snp_makeConstraints { (make) -> Void in
                 make.bottom.left.right.equalTo(self.backView)
-                make.top.equalTo(self.backView).offset(80)
+                make.top.equalTo(self.segmentedView.snp_bottom)
             }
         })
-        BaseJSONGet(&TestArray) { () -> () in
+        
+        sendFirstPOST() { () -> () in
             self.tableView.reloadData()
         }
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        let classListTitle = UILabel()
+        classListTitle.text = "Class List"
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TestArray.count
+        return infoArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return generateInitialCell(TestArray, tableView: tableView, indexPath: indexPath)
+        return generateInitialCell(&infoArray, tableView: tableView, indexPath: indexPath)
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        sendFirstPOST(&infoArray) { () -> () in
-            
+        let input = infoArray[indexPath.row].className![5...8]
+        sendClassPOST(input) { () -> () in
+            dispatch_async(dispatch_get_main_queue(),{
+                self.performSegueWithIdentifier("classDetailsSegue", sender: self)
+            })
         }
     }
 }
