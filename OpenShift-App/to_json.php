@@ -1,4 +1,20 @@
 <?php
+/** @mainpage TA/LA Tracker 
+*
+* @authors Austin Holler, Tristan Hill, Marvin Tann, Frederik Lohner
+*
+* @section intro Introduction
+* This provides the functionality of being able to query our MySQL database 
+* easily and return meaningful JSON output. The entire project repository can be
+* found at: <A HREF="https://github.com/FredLoh/TA-LA-Schedule-Tracker"> TA/LA Tracker</A>
+*
+* <hr>
+* @section notes Release Notes
+* - Updated queries and output to interface with mobile app better
+*
+* <hr>
+* 
+*/
 /*
  * to_json.php
  * 
