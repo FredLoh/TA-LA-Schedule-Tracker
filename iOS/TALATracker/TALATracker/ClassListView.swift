@@ -13,10 +13,20 @@ import SnapKit
 class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let backView = UIView()
     let tableView = UITableView()
+    let segmentedView = ListenRecordSegmentedController()
     
     
     override func viewDidLoad() {
         self.view.addSubview(backView)
+//        let topBar = generateTopBar(backView)
+        
+        backView.addSubview(segmentedView)
+        segmentedView.snp_makeConstraints { (make) -> Void in
+            make.left.right.equalTo(backView)
+            make.top.equalTo(backView).offset(20)
+            make.height.equalTo(50)
+        }
+
         backView.backgroundColor = UIColor.whiteColor()
         backView.snp_makeConstraints { (make) -> Void in
             make.left.top.right.bottom.equalTo(self.view)
@@ -29,7 +39,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         dispatch_async(dispatch_get_main_queue(),{
             self.tableView.snp_makeConstraints { (make) -> Void in
                 make.bottom.left.right.equalTo(self.backView)
-                make.top.equalTo(self.backView).offset(80)
+                make.top.equalTo(self.segmentedView.snp_bottom)
             }
         })
         
@@ -38,6 +48,8 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        let classListTitle = UILabel()
+        classListTitle.text = "Class List"
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

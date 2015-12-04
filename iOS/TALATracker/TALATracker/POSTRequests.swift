@@ -25,10 +25,12 @@ func sendFirstPOST(success:()->())->Bool {
     request.HTTPMethod = "POST"
     /* POST format appears to be as follows, type=(type)&name=(name */
     let bodyData = "type=class&phrase="
-    request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
+    request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding)
     NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
         (response, data, error) in
-        
+        if error != nil {
+            print(error)
+        }
         if data != nil {
             let json = JSON(data: data!)
             infoArray.removeAll()
@@ -38,6 +40,7 @@ func sendFirstPOST(success:()->())->Bool {
                     let day = json[i]["Day"].string,
                     let time = json[i]["Time"].string,
                     let location = json[i]["Location"].string else {
+                        print("Error while parsing first POST")
                         return
                 }
                 let newEntry = JSONReturn(name: name, className: className, day: day, time: time, location: location)
