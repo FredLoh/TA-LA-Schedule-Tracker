@@ -28,7 +28,6 @@ func generateInitialCell(inout array: [JSONReturn], tableView: UITableView, inde
     }
     
     classesArray.append(array[indexPath.row])
-    print(classesArray.count)
     className.text = classN
     className.adjustsFontSizeToFitWidth = true
     className.textAlignment = .Center

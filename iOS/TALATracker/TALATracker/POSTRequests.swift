@@ -11,6 +11,11 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
+/// sendFirstPOST: Sends initial post to get all data from DB.
+///
+/// -Parameters: None
+///
+/// -Returns: Boolean
 func sendFirstPOST(success:()->())->Bool {
     let urlString = "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php"
     guard let getURL = NSURL(string: urlString) as NSURL? else {
@@ -26,6 +31,7 @@ func sendFirstPOST(success:()->())->Bool {
         
         if data != nil {
             let json = JSON(data: data!)
+            infoArray.removeAll()
             for var i=0;i<json.count;i++ {
                 guard let name = json[i]["Name"].string,
                     let className = json[i]["Classname"].string,
@@ -42,13 +48,12 @@ func sendFirstPOST(success:()->())->Bool {
     }
     return true
 }
-
-func sendClassPOST(input: String) {
+func sendClassPOST(input: String, success:()->()) {
     let parameters = [
         "type": "class",
         "phrase": "\(input)",
     ]
-    
+    print(input)
     Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
         .response { request, response, data, error in
             if error != nil {
@@ -56,18 +61,21 @@ func sendClassPOST(input: String) {
             } else {
                 if data != nil {
                     let json = JSON(data: data!)
-                    for var i=0;i>json.count;i++ {
+                    timesArray.removeAll()
+                    for var i=0;i<json.count;i++ {
                         guard let name = json[i]["Name"].string,
                             let className = json[i]["Classname"].string,
                             let day = json[i]["Day"].string,
                             let time = json[i]["Time"].string,
                             let location = json[i]["Location"].string else {
+                                print("returning")
                                 return
                         }
                         let newEntry = JSONReturn(name: name, className: className, day: day, time: time, location: location)
                         timesArray.append(newEntry)
-                        print(timesArray)
                     }
+                    print(timesArray)
+                    success()
                 }
             }
     }
