@@ -27,22 +27,37 @@
 //and
 //sudo apt-get install php5-mysql
 
-function goWhere($type, $phrase){
+function goWhere($type, $phrase1, $phrase2){
 	
 	if(!strcmp($type, "name")){
-		name($phrase);
+		name($phrase1);
+	}
+	else if(!strcmp($type, "getTA")){
+		allTAs();
+	}
+	else if(!strcmp($type, "TAsClasses")){
+		TAsClasses($phrase1);
 	}
 	else if(!strcmp($type, "class")){
-		course($phrase);
+		course($phrase1);
+	}
+	else if(!strcmp($type, "getClasses")){
+		allClasses();
+	}
+	else if(!strcmp($type, "ClassTAs")){
+		classTAs($phrase1);
+	}
+	else if(!strcmp($type, "getSessions")){
+		getSessions($phrase1, $phrase2);
 	}
 	else if(!strcmp($type, "addClass")){
-		insertClass($phrase);
+		insertClass($phrase1);
 	}
 	else if(!strcmp($type, "addTA")){
-		insertTA($phrase);
+		insertTA($phrase1);
 	}
 	else if(!strcmp($type, "delete")){
-		deleteAll($phrase);
+		deleteAll($phrase1);
 	}
 	else{
 		echo "Please enter a valid search term";
@@ -61,12 +76,18 @@ function course($x) {
 	$db = new PDO($dsn, DB_USER, DB_PASS);
 
 	$sql = "select TAs.Name, Classes.Classname, Sessions.Day, Sessions.Time, Sessions.Location 
-	from TAs, Classes, Sessions 
-	where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and Classes.Classname like '%$x%'";
+			from TAs, Classes, Sessions 
+			where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and Classes.Classname like '%$x%'";
 
 	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+	
+	$json = json_encode($array);
+	
+	for( $i = 0; $i < count($array); $i++){
+			echo $array[$i], "-----", $i, "-----", "\n";
+	}
 
-	echo json_encode($array), "\n";
+	echo $json, "\n";
 
 }
 
@@ -82,12 +103,20 @@ function name($x) {
 	$db = new PDO($dsn, DB_USER, DB_PASS);
 
 	$sql = "select TAs.Name, Classes.Classname, Sessions.Day, Sessions.Time, Sessions.Location 
-	from TAs, Classes, Sessions 
-	where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and TAs.name like '%$x%'";
+			from TAs, Classes, Sessions 
+			where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and TAs.name like '%$x%'";
 
 	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-	echo json_encode($array), "\n";
+	$json = json_encode($array);
+	
+	$json_array = explode(",", $json);
+	
+	for( $i = 0; $i < count($json_array); $i++){
+			echo $json_array[$i], "-----", $i, "-----", "\n";
+	}	
+
+	echo $json, "\n";
 
 }
 
@@ -155,7 +184,7 @@ function deleteAll($x){
 	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$sql = "delete from Sessions
-where TAID in (select ID from TAs where TAs.Name = '$x') or ClassID in (select ID from Classes where Classes.Classname = '$x');";
+			where TAID in (select ID from TAs where TAs.Name = '$x') or ClassID in (select ID from Classes where Classes.Classname = '$x');";
 	$db->exec($sql);
 }
 
@@ -171,7 +200,7 @@ function deleteTA($x){
 	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$sql = "delete from TAs
-where Name = '$x';";
+			where Name = '$x';";
 	$db->exec($sql);
 }
 
@@ -187,12 +216,121 @@ function deleteClass($x){
 	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$sql = "delete from Classes
-where Classname = '$x';";
+			where Classname = '$x';";
 	$db->exec($sql);
 }
 
-goWhere($_POST["type"], $_POST["phrase"]);
+function allClasses() {
+	
+	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
+	define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+	define('DB_PASS',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+	define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
 
-//insertSession("Bob", "MATH 1000", "M", "12:00 PM - 2:00 PM", "ECCR 1234");
+	$dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
+	$db = new PDO($dsn, DB_USER, DB_PASS);
+
+	$sql = "select Classname from Classes";
+
+	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$json = json_encode($array);	
+
+	echo $json, "\n";
+
+}
+
+function allTAs() {
+	
+	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
+	define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+	define('DB_PASS',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+	define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
+
+	$dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
+	$db = new PDO($dsn, DB_USER, DB_PASS);
+
+	$sql = "select Name from TAs";
+
+	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$json = json_encode($array);	
+
+	echo $json, "\n";
+
+}
+
+function classTAs($x) {
+	
+	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
+	define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+	define('DB_PASS',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+	define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
+
+	$dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
+	$db = new PDO($dsn, DB_USER, DB_PASS);
+
+	$sql = "select distinct TAs.Name
+			from TAs, Classes, Sessions 
+			where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and (Classes.Classname like '%$x%');";
+
+	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$json = json_encode($array);	
+
+	echo $json, "\n";
+
+}
+
+function TAsClasses($x) {
+	
+	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
+	define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+	define('DB_PASS',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+	define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
+
+	$dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
+	$db = new PDO($dsn, DB_USER, DB_PASS);
+
+	$sql = "select distinct Classes.Classname
+			from TAs, Classes, Sessions 
+			where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and (TAs.name like '%$x%');";
+
+	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$json = json_encode($array);	
+
+	echo $json, "\n";
+
+}
+
+function getSessions($x, $y) {
+	
+	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
+	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
+	define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
+	define('DB_PASS',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
+	define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
+
+	$dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
+	$db = new PDO($dsn, DB_USER, DB_PASS);
+
+	$sql = "select TAs.Name, Classes.Classname, Sessions.Day, Sessions.Time, Sessions.Location 
+			from TAs, Classes, Sessions 
+			where TAs.ID = Sessions.TAID and Classes.ID = Sessions.ClassID and (TAs.name like '%$x%' and Classes.Classname like '%$y%');";
+
+	$array = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$json = json_encode($array);	
+
+	echo $json, "\n";
+
+}
+
+goWhere($_POST["type"], $_POST["phrase1"], $_POST["phrase2"]);
 
 ?>
