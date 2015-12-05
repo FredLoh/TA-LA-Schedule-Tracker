@@ -11,6 +11,7 @@
                 <viewController id="BYZ-38-t0r" customClass="ClassListView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Nn4-g1-TZu" kind="show" identifier="classDetailsSegue" id="QiH-nc-uoP"/>
+                        <segue destination="bhF-8I-fAy" kind="show" identifier="taClassListSegue" id="Qte-Eu-myh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -29,6 +30,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9M3-Em-EmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="528" y="405"/>
+        </scene>
+        <!--Class List for Ta-->
+        <scene sceneID="79Y-1J-d3N">
+            <objects>
+                <viewController title="Class List for Ta" id="bhF-8I-fAy" customClass="ClassListForTA" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TvQ-dI-pzX"/>
+                        <viewControllerLayoutGuide type="bottom" id="jx3-Yq-Zej"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="THF-rU-G0P">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="back" id="Akh-a4-UIh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQL-db-KIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="350" y="1121"/>
         </scene>
         <!--Details View-->
         <scene sceneID="uW7-zN-xHx">
@@ -54,6 +77,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pDg-cQ-lGm"/>
+        <segue reference="QiH-nc-uoP"/>
+        <segue reference="Akh-a4-UIh"/>
     </inferredMetricsTieBreakers>
 </document>

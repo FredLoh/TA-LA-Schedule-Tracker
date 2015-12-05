@@ -23,14 +23,14 @@ class TALATrackerTests: XCTestCase {
     }
         
     func tesPOSTFunc() {
-        var testArray = [JSONReturn]()
+        var testArray = [Session]()
         sendFirstPOST() { () -> () in
             XCTAssertNotEqual(testArray.count, 0)
         }
     }
     
     func testStruct() {
-        var json = JSONReturn()
+        var json = Session()
         json.className = "Class"
         json.day = "Mon"
         json.location = "CSEL"

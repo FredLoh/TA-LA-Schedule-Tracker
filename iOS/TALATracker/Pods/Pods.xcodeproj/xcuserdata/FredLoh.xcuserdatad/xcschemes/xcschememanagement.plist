@@ -9,17 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CVCalendar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-TALATracker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftOverlays.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>165B8343AC73A94D32C4046A00EBCC05</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3CFCD1EEC33720737A9560799ED28350</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BA14B622689766F6B8A4F42FD9DE552F</key>
+		<key>6A2D5EE174D064ECE188B5CDF17B6D7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F22A715562EE425ABE1C75A3A7A4CBAB</key>
+		<key>A9A9D5CC93512608080C5CB083B36ED3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE49DCA00F7FE8C551354CE7F9E7869A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB6161B320C83452058B6E2CC0D2F728</key>
 		<dict>
 			<key>primary</key>
 			<true/>

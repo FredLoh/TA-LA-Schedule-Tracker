@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 import SnapKit
-import CVCalendar
-class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSource, CVCalendarMenuViewDelegate   {
+
+class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let picture = UIImageView()
     let name = UILabel()
     let classes = UITableView()
@@ -39,6 +39,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         name.font = taNameFont
         classes.delegate = self
         classes.dataSource = self
+        classes.separatorStyle = .None
         self.view.addSubview(picture)
         self.view.addSubview(name)
         self.view.addSubview(classes)
@@ -62,8 +63,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.separatorInset.left = 0
-        cell.separatorInset.right = 0
+        
         let sesh = UILabel()
         cell.addSubview(sesh)
         sesh.text = sessionArray[indexPath.row].dateTime

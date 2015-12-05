@@ -10,6 +10,7 @@
 		94E1D40B723E36DC1A6FA2A8 /* Pods_TALATracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453C3BCA6DE00075F2C51553 /* Pods_TALATracker.framework */; };
 		DB11F6091C063A5B0089CC2A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB11F6081C063A5B0089CC2A /* String.swift */; };
 		DB3302A31BF1437200E8238B /* CellGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3302A21BF1437200E8238B /* CellGeneration.swift */; };
+		DB3696181C13818D00FE12C3 /* ClassListForTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3696171C13818D00FE12C3 /* ClassListForTA.swift */; };
 		DB405E681C0E2D2700AEB73B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB405E671C0E2D2700AEB73B /* File.swift */; };
 		DB405E6A1C0E39E200AEB73B /* ClassDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB405E691C0E39E200AEB73B /* ClassDetailsView.swift */; };
 		DB671F721C1227DD005B0119 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB671F711C1227DD005B0119 /* TopBar.swift */; };
@@ -51,6 +52,7 @@
 		5764560E3E7C36F6D318CD0A /* Pods-TALATracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TALATracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TALATracker/Pods-TALATracker.debug.xcconfig"; sourceTree = "<group>"; };
 		DB11F6081C063A5B0089CC2A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DB3302A21BF1437200E8238B /* CellGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGeneration.swift; sourceTree = "<group>"; };
+		DB3696171C13818D00FE12C3 /* ClassListForTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassListForTA.swift; sourceTree = "<group>"; };
 		DB405E671C0E2D2700AEB73B /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		DB405E691C0E39E200AEB73B /* ClassDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailsView.swift; sourceTree = "<group>"; };
 		DB671F711C1227DD005B0119 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -127,6 +129,23 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		DB3696151C13817100FE12C3 /* ClassListViews */ = {
+			isa = PBXGroup;
+			children = (
+				DB405E691C0E39E200AEB73B /* ClassDetailsView.swift */,
+				DB671F771C12320B005B0119 /* TADetailsView.swift */,
+			);
+			name = ClassListViews;
+			sourceTree = "<group>";
+		};
+		DB3696161C13817E00FE12C3 /* TALIstViews */ = {
+			isa = PBXGroup;
+			children = (
+				DB3696171C13818D00FE12C3 /* ClassListForTA.swift */,
+			);
+			name = TALIstViews;
+			sourceTree = "<group>";
+		};
 		DB405E661C0E2D2100AEB73B /* Global Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,8 +195,8 @@
 				DB8E7E6A1BC1CA5700B63F2A /* JSONRequets */,
 				DB8E7E3C1BC1CA3400B63F2A /* AppDelegate.swift */,
 				DB8E7E6F1BC1CC7A00B63F2A /* ClassListView.swift */,
-				DB405E691C0E39E200AEB73B /* ClassDetailsView.swift */,
-				DB671F771C12320B005B0119 /* TADetailsView.swift */,
+				DB3696151C13817100FE12C3 /* ClassListViews */,
+				DB3696161C13817E00FE12C3 /* TALIstViews */,
 				DB8E7E711BC1CF5200B63F2A /* GlobalVariables.swift */,
 				DB8E7E401BC1CA3400B63F2A /* Main.storyboard */,
 				DB8E7E431BC1CA3400B63F2A /* Assets.xcassets */,
@@ -406,6 +425,7 @@
 				DB671F721C1227DD005B0119 /* TopBar.swift in Sources */,
 				DB8E7E6C1BC1CA6400B63F2A /* BaseJSON.swift in Sources */,
 				DB8E7E721BC1CF5200B63F2A /* GlobalVariables.swift in Sources */,
+				DB3696181C13818D00FE12C3 /* ClassListForTA.swift in Sources */,
 				DB671F761C122B45005B0119 /* ColorAndFonts.swift in Sources */,
 				DB671F741C122B2F005B0119 /* SelectorView.swift in Sources */,
 			);

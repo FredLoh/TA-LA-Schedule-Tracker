@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CD38E1EA855EB3614C1D096B'
-               BlueprintName = 'Alamofire'
+               BlueprintIdentifier = 'AC8D0CBE73D95D9293090670'
+               BlueprintName = 'SwiftOverlays'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Alamofire.framework'>
+               BuildableName = 'SwiftOverlays.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

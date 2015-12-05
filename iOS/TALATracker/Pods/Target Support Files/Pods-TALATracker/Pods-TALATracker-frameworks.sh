@@ -85,13 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TALATracker/Alamofire.framework"
-  install_framework "Pods-TALATracker/CVCalendar.framework"
   install_framework "Pods-TALATracker/SnapKit.framework"
+  install_framework "Pods-TALATracker/SwiftOverlays.framework"
   install_framework "Pods-TALATracker/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TALATracker/Alamofire.framework"
-  install_framework "Pods-TALATracker/CVCalendar.framework"
   install_framework "Pods-TALATracker/SnapKit.framework"
+  install_framework "Pods-TALATracker/SwiftOverlays.framework"
   install_framework "Pods-TALATracker/SwiftyJSON.framework"
 fi

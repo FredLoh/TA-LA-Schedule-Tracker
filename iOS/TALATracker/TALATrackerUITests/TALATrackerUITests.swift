@@ -33,6 +33,33 @@ class TALATrackerUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
+        let tablesQuery = app.tables
+        let csci2270ComputerScience2DataStructuresStaticText = tablesQuery.staticTexts["CSCI 2270: Computer Science 2: Data Structures"]
+        csci2270ComputerScience2DataStructuresStaticText.tap()
+        
+        let brennanMStaticText = tablesQuery.staticTexts["Brennan M"]
+        brennanMStaticText.tap()
+        
+        let backarrowButton = app.buttons["backArrow"]
+        backarrowButton.tap()
+        
+        let kadeCStaticText = tablesQuery.staticTexts["Kade C"]
+        kadeCStaticText.tap()
+        backarrowButton.tap()
+        app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(4).childrenMatchingType(.Other).elementBoundByIndex(0).buttons["backArrow"].tap()
+        backarrowButton.tap()
+        tablesQuery.staticTexts["CSCI 3104: Algorithms"].tap()
+        backarrowButton.tap()
+        
+        let taLaSStaticText = app.staticTexts["TA/LA's"]
+        taLaSStaticText.tap()
+        brennanMStaticText.tap()
+        backarrowButton.tap()
+        taLaSStaticText.tap()
+        kadeCStaticText.tap()
+        csci2270ComputerScience2DataStructuresStaticText.tap()
+        backarrowButton.tap()
+        
   
     }
     

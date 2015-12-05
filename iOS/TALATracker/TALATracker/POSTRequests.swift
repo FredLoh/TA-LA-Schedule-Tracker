@@ -114,5 +114,92 @@ func sendSessionsPOST(classID: String, taName: String, success:()->()) {
                 }
             }
     }
+}
+
+func getTAListPOST(success:()->()) {
+    let parameters = [
+        "type": "ClassTAs",
+        "phrase1": "",
+        "phrase2": "",
+    ]
+    Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
+        .response { request, response, data, error in
+            if error != nil {
+                print(error)
+            } else {
+                if data != nil {
+                    let json = JSON(data: data!)
+                    print(json)
+                    TAArray.removeAll()
+                    for var i=0;i<json.count;i++ {
+                        guard let name = json[i]["Name"].string else {
+                                print("returning")
+                                return
+                        }
+                        let newEntry = TAS(name: name)
+                        print(newEntry)
+                        TAArray.append(newEntry)
+                    }
+                    print(TAArray)
+                    success()
+                }
+            }
+    }
     
+}
+
+func getClassListFromTA(taName:String, success:()->()) {
+    let parameters = [
+        "type": "TAsClasses",
+        "phrase1": "\(taName)",
+        "phrase2": "",
+    ]
+    Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
+        .response { request, response, data, error in
+            if error != nil {
+                print(error)
+            } else {
+                if data != nil {
+                    let json = JSON(data: data!)
+                    print(json)
+                    classesArray.removeAll()
+                    for var i=0;i<json.count;i++ {
+                        guard let className = json[i]["Classname"].string else {
+                            print("returning")
+                            return
+                        }
+                        let newEntry = Classes(className: className)
+                        print(newEntry)
+                        classesArray.append(newEntry)
+                    }
+                    print(classesArray)
+                    success()
+                }
+            }
+    }
+}
+
+//ADD TA POST
+//Add test individually first
+//Then name, className, day, time, location
+
+func addClass(success:()->()) {
+    let parameters = [
+        "type": "addSession",
+        "phrase1": "Test",
+        "phrase2": "CSCI 2270: Computer Science 2: Data Structures",
+        "phrase3": "M.T.W.T.F",
+        "phrase4": "11:00 AM - 8:00 PM",
+        "phrase5": "CSEL",
+    ]
+    Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
+        .response { request, response, data, error in
+            if error != nil {
+                print(error)
+            } else {
+                if data != nil {
+                    success()
+                }
+            }
+    }
 }
