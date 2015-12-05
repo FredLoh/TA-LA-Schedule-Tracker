@@ -13,7 +13,10 @@ import SnapKit
 class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let backView = UIView()
     let tableView = UITableView()
+    var classID: String?
+    
     override func viewDidLoad() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(backView)
@@ -22,10 +25,19 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
         backView.snp_makeConstraints { (make) -> Void in
             make.left.top.right.bottom.equalTo(self.view)
         }
+        let topBar = generateTopBar(backView)
+        let title = UILabel()
+        title.text = "TA / LA List"
+        title.font = taNameFont
+        topBar.addSubview(title)
+        title.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(topBar)
+        }
         tableView.snp_makeConstraints { (make) -> Void in
             make.left.right.bottom.equalTo(backView)
-            make.top.equalTo(backView).offset(40)
+            make.top.equalTo(topBar.snp_bottom)
         }
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,5 +54,17 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        sendSessionsPOST(classID!, taName: TAArray[indexPath.row].name!) { () -> () in
+            self.performSegueWithIdentifier("TADetailSegue", sender: self)
+        }
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "TADetailSegue") {
+            let svc = segue.destinationViewController as! TADetailsView
+            svc.classID = classID
+        }
+    }
     
 }

@@ -33,11 +33,11 @@ func sendFirstPOST(success:()->())->Bool {
         }
         if data != nil {
             let json = JSON(data: data!)
-            infoArray.removeAll()
+            classesArray.removeAll()
             for var i=0;i<json.count;i++ {
                 guard let name = json[i]["Classname"].string else {
-                        print("Error while parsing first POST")
-                        return
+                    print("Error while parsing first POST")
+                    return
                 }
                 let newEntry = Classes(className: name)
                 classesArray.append(newEntry)
@@ -67,8 +67,8 @@ func sendClassPOST(input: String, success:()->()) {
                     TAArray.removeAll()
                     for var i=0;i<json.count;i++ {
                         guard let name = json[i]["Name"].string else {
-                                print("returning")
-                                return
+                            print("returning")
+                            return
                         }
                         let newEntry = TAS(name: name)
                         print(newEntry)
@@ -79,4 +79,40 @@ func sendClassPOST(input: String, success:()->()) {
                 }
             }
     }
+}
+
+func sendSessionsPOST(classID: String, taName: String, success:()->()) {
+    let parameters = [
+        "type": "getSessions",
+        "phrase1": "\(taName)",
+        "phrase2": "\(classID)",
+    ]
+    Alamofire.request(.POST, "http://myfirstphpapp-testingtojson1.rhcloud.com/to_json.php", parameters: parameters)
+        .response { request, response, data, error in
+            if error != nil {
+                print(error)
+            } else {
+                if data != nil {
+                    let json = JSON(data: data!)
+                    print(json)
+                    TAArray.removeAll()
+                    for var i=0;i<json.count;i++ {
+                        guard let name = json[i]["Name"].string,
+                            let className = json[i]["Classname"].string,
+                            let day = json[i]["Day"].string,
+                            let time = json[i]["Time"].string,
+                            let location = json[i]["Location"].string else {
+                                print("returning")
+                                return
+                        }
+                        let newEntry = Session(name: name, className: className, day: day, time: time, location: location)
+                        print(newEntry)
+                        sessionArray.append(newEntry)
+                    }
+                    print(sessionArray)
+                    success()
+                }
+            }
+    }
+    
 }

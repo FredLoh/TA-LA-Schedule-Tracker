@@ -14,6 +14,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     let picture = UIImageView()
     let name = UILabel()
     let classes = UITableView()
+    var classID: String?
     
     override func viewDidLoad() {
         picture.image = UIImage(named: "CU")
@@ -41,12 +42,18 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return sessionArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.separatorInset.left = 0
         cell.separatorInset.right = 0
+        let sesh = UILabel()
+        cell.addSubview(sesh)
+        sesh.text = sessionArray[indexPath.row].dateTime
+        sesh.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(cell)
+        }
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

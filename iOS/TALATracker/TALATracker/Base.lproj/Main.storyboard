@@ -20,7 +20,11 @@
         <!--Class Details View-->
         <scene sceneID="8Tb-W0-MTB">
             <objects>
-                <viewController title="Class Details View" id="Nn4-g1-TZu" customClass="ClassDetailsView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController title="Class Details View" id="Nn4-g1-TZu" customClass="ClassDetailsView" customModule="TALATracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="rff-vI-WdF" kind="show" identifier="TADetailSegue" id="71j-vh-AYv"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9M3-Em-EmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="528" y="405"/>

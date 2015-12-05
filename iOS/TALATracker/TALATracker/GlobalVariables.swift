@@ -15,7 +15,7 @@ struct TAS {
     var name: String?
 }
 
-struct JSONReturn {
+struct Session {
     var name: String?
     var className: String?
     var day: String?
@@ -29,7 +29,6 @@ struct JSONReturn {
     }
 }
 var TestArray : NSArray = []
-var infoArray = [JSONReturn]()
 var classesArray = [Classes]()
 var TAArray = [TAS]()
-var timesArray = [JSONReturn]()
+var sessionArray = [Session]()

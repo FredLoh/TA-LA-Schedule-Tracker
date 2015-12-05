@@ -15,6 +15,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     let tableView = UITableView()
     let segmentedView = ListenRecordSegmentedController()
     var sideSwipeRecognizer: UISwipeGestureRecognizer?
+    var classID: String?
     
     func swipeLeft(recognizer : UISwipeGestureRecognizer) {
         if self.segmentedView.selectedIndex == 0 {
@@ -79,10 +80,17 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let input = classesArray[indexPath.row].className![5...8]
+        classID = input
         sendClassPOST(input) { () -> () in
             dispatch_async(dispatch_get_main_queue(),{
                 self.performSegueWithIdentifier("classDetailsSegue", sender: self)
             })
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "classDetailsSegue") {
+            let svc = segue.destinationViewController as! ClassDetailsView
+            svc.classID = classID
         }
     }
 }
