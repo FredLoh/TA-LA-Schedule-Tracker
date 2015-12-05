@@ -11,10 +11,14 @@
 * <hr>
 * @section notes Release Notes
 * - Updated queries and output to interface with mobile app better
-*
 * <hr>
-* 
+* @section requirements Requirements
+* Reqires php and the mysql extension to be installed--to install, run
+* sudo apt-get install php5-cli
+* and
+* sudo apt-get install php5-mysql
 */
+
 /*
  * to_json.php
  * 
@@ -38,11 +42,13 @@
  * 
  */
 
-//Reqires php and the mysql extension to be installed--to install, run
-//sudo apt-get install php5-cli
-//and
-//sudo apt-get install php5-mysql
-
+/*!
+*This function tells which of the following functions should be used,
+*and passes them the appropriate variables, if any.
+*@param type This is a string that goWhere parses to determine which function to call.
+*@param phrase1 This is an argument to pass to a function--either the name of a class or a TA.
+*@param phrase2 This is a second argument for the getSessions function, which requires two.
+* */
 function goWhere($type, $phrase1, $phrase2){
 	
 	if(!strcmp($type, "name")){
@@ -80,6 +86,10 @@ function goWhere($type, $phrase1, $phrase2){
 	}
 }
 
+/*!
+*This function finds all sessions for a single course. Defunct, and kept for reference.
+*@param x This is the name of the course that is to be used as a search term.
+* */
 function course($x) {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -107,6 +117,10 @@ function course($x) {
 
 }
 
+/*!
+*This function finds all sessions for a single TA. Defunct, and kept for reference.
+*@param x This is the name of the course that is to be used as a search term.
+* */
 function name($x) {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -136,6 +150,10 @@ function name($x) {
 
 }
 
+/*!
+*This function inserts a string into the 'Classes' mysql table.
+*@param x This is the name of the course that is to be inserted into the table.
+* */
 function insertClass($x) {
 
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -152,6 +170,10 @@ function insertClass($x) {
 	$db->exec($sql);
 }
 
+/*!
+*This function inserts a string into the 'TAs' mysql table.
+*@param x This is the name of the TA that is to be inserted into the table.
+* */
 function insertTA($x) {
 
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -168,6 +190,14 @@ function insertTA($x) {
 	$db->exec($sql);
 }
 
+/*!
+*This function inserts a session into the 'Sessions' mysql table.
+*@param a This is the name of the TA that runs the session in question.
+*@param b This is the name of the class the session is about.
+*@param c This is the day the session occurs.
+*@param d This is the time of day the session occurs
+*@param e This is location where the session will take place.
+* */
 function insertSession($a, $b, $c, $d, $e) {
 
 //Variable meanings: a = TAID, b = ClassID, c = Day, d = Time, e = Location
@@ -187,6 +217,10 @@ function insertSession($a, $b, $c, $d, $e) {
 
 }
 
+/*!
+*This function deletes all sessions associated with a specific class or TA.
+*@param x This is the name of the class or TA to be deleted.
+* */
 function deleteAll($x){
 
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -204,6 +238,10 @@ function deleteAll($x){
 	$db->exec($sql);
 }
 
+/*!
+*This function deletes a TA from the 'TAs' mysql table.
+*@param x This is the name of the TA that is to be deleted from the table.
+* */
 function deleteTA($x){
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
 	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
@@ -220,6 +258,10 @@ function deleteTA($x){
 	$db->exec($sql);
 }
 
+/*!
+*This function deletes a class from the 'Classes' mysql table.
+*@param x This is the name of the class that is to be deleted from the table.
+* */
 function deleteClass($x){
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
 	define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT')); 
@@ -236,6 +278,9 @@ function deleteClass($x){
 	$db->exec($sql);
 }
 
+/*!
+*This function prints out all the class names logged in the 'Classes' mysql table.
+* */
 function allClasses() {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -257,6 +302,9 @@ function allClasses() {
 
 }
 
+/*!
+*This function prints out all the TA names logged in the 'TAs' mysql table.
+* */
 function allTAs() {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -278,6 +326,10 @@ function allTAs() {
 
 }
 
+/*!
+*This function prints all TAs that are associated with a given class.
+*@param x This is the name of the class to be used as a search term.
+* */
 function classTAs($x) {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -301,6 +353,10 @@ function classTAs($x) {
 
 }
 
+/*!
+*This function prints all classes that a given TA is associated with.
+*@param x This is the name of the TA to be used as a search term.
+* */
 function TAsClasses($x) {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
@@ -324,6 +380,11 @@ function TAsClasses($x) {
 
 }
 
+/*!
+*This function prints out all the sessions a given TA runs for a given class.
+*@param x This is the name of the TA to be used as a search term.
+*@param y This is the name of the class to be used as a search term.
+* */
 function getSessions($x, $y) {
 	
 	define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
