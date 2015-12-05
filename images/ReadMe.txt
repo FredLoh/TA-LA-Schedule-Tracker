@@ -10,7 +10,7 @@ standard__1024x1024
 iPhone_6s_Plus_3x__540x540
 iPhone_6s_Plus_2x__360x360
 iPad_Pro_2x__334x334
-ipad_2x__304x304
+iPad_2x__304x304
 placeholder__300x300
 iPhone_6s_2x__240x240
 iPhone_6s_Plus_1x__180x180
