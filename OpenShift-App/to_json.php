@@ -47,9 +47,12 @@
 *and passes them the appropriate variables, if any.
 *@param type This is a string that goWhere parses to determine which function to call.
 *@param phrase1 This is an argument to pass to a function--either the name of a class or a TA.
-*@param phrase2 This is a second argument for the getSessions function, which requires two.
+*@param phrase2 This is a second argument for the getSessions function, which requires two, or addSession, which requires five.
+@param phrase3 This is a third argument for the addSession function, which requires five.
+@param phrase4 This is a fourth argument for the addSession function, which requires five.
+@param phrase5 This is a fifth argument for the addSession function, which requires five.
 * */
-function goWhere($type, $phrase1, $phrase2){
+function goWhere($type, $phrase1, $phrase2, $phrase3, $phrase4, $phrase5){
 	
 	if(!strcmp($type, "name")){
 		name($phrase1);
@@ -80,6 +83,9 @@ function goWhere($type, $phrase1, $phrase2){
 	}
 	else if(!strcmp($type, "delete")){
 		deleteAll($phrase1);
+	}
+	else if(!strcmp($type, "addSession")){
+		insertSession($phrase1, $phrase2, $phrase3, $phrase4, $phrase5);
 	}
 	else{
 		echo "Please enter a valid search term";
@@ -408,6 +414,6 @@ function getSessions($x, $y) {
 
 }
 
-goWhere($_POST["type"], $_POST["phrase1"], $_POST["phrase2"]);
+goWhere($_POST["type"], $_POST["phrase1"], $_POST["phrase2"], $_POST["phrase3"], $_POST["phrase4"], $_POST["phrase5"]);
 
 ?>
