@@ -14,6 +14,11 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
     let backView = UIView()
     let tableView = UITableView()
     var classID: String?
+    var taName: String?
+    
+    func back() {
+        self.performSegueWithIdentifier("back", sender: self)
+    }
     
     override func viewDidLoad() {
         
@@ -26,6 +31,15 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
             make.left.top.right.bottom.equalTo(self.view)
         }
         let topBar = generateTopBar(backView)
+        let backArrow = UIButton()
+        backArrow.setImage(UIImage(named: "backArrow"), forState: UIControlState.Normal)
+        backArrow.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+        topBar.addSubview(backArrow)
+        backArrow.snp_makeConstraints { (make) -> Void in
+            make.height.width.equalTo(30)
+            make.left.equalTo(topBar).offset(10)
+            make.centerY.equalTo(topBar)
+        }
         let title = UILabel()
         title.text = "TA / LA List"
         title.font = taNameFont
@@ -38,6 +52,10 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
             make.top.equalTo(topBar.snp_bottom)
         }
         
+    }
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+        print(TAArray)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,8 +73,11 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        sendSessionsPOST(classID!, taName: TAArray[indexPath.row].name!) { () -> () in
-            self.performSegueWithIdentifier("TADetailSegue", sender: self)
+        if let name = TAArray[indexPath.row].name {
+            sendSessionsPOST(classID!, taName: name) { () -> () in
+                self.taName = name
+                self.performSegueWithIdentifier("TADetailSegue", sender: self)
+            }
         }
         
     }
@@ -64,6 +85,7 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
         if (segue.identifier == "TADetailSegue") {
             let svc = segue.destinationViewController as! TADetailsView
             svc.classID = classID
+            svc.taName = taName
         }
     }
     

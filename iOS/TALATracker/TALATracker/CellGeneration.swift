@@ -14,7 +14,9 @@ func generateInitialCell(inout array: [Classes], tableView: UITableView, indexPa
     
     let classCell = UITableViewCell(style: .Default, reuseIdentifier: "articleCell")
     let className = UILabel()
+    let separatorBar = UIView()
     
+    classCell.addSubview(separatorBar)
     classCell.addSubview(className)
     
     guard let classN = array[indexPath.row].className else {
@@ -31,6 +33,12 @@ func generateInitialCell(inout array: [Classes], tableView: UITableView, indexPa
             make.right.equalTo(classCell).offset(-5)
         }
     })
+    
+    separatorBar.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.15)
+    separatorBar.snp_makeConstraints { (make) -> Void in
+        make.left.bottom.right.equalTo(classCell)
+        make.height.equalTo(0.5)
+    }
     
     
     return classCell

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CVCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TALATracker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>165B8343AC73A94D32C4046A00EBCC05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3CFCD1EEC33720737A9560799ED28350</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>624522CBEEC6B64FA2B2C60A2C60C740</key>
+		<key>BA14B622689766F6B8A4F42FD9DE552F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C45CDFBBE21C4E7EFB9F1C6E87F9697</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>802D8372D5AB1B0B4E88E6B3793C4510</key>
+		<key>F22A715562EE425ABE1C75A3A7A4CBAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

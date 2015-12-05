@@ -9,16 +9,33 @@
 import Foundation
 import UIKit
 import SnapKit
-
-class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+import CVCalendar
+class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSource, CVCalendarMenuViewDelegate   {
     let picture = UIImageView()
     let name = UILabel()
     let classes = UITableView()
     var classID: String?
+    var taName: String?
+    
+    
+    func back() {
+        self.performSegueWithIdentifier("back", sender: self)
+    }
     
     override func viewDidLoad() {
+        let topBar = generateTopBar(self.view)
+        let backArrow = UIButton()
+        backArrow.setImage(UIImage(named: "backArrow"), forState: UIControlState.Normal)
+        backArrow.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+        topBar.addSubview(backArrow)
+        backArrow.snp_makeConstraints { (make) -> Void in
+            make.height.width.equalTo(30)
+            make.left.equalTo(topBar).offset(10)
+            make.centerY.equalTo(topBar)
+        }
+
         picture.image = UIImage(named: "CU")
-        name.text = "TALA NAME"
+        name.text = "\(taName!)"
         name.font = taNameFont
         classes.delegate = self
         classes.dataSource = self
@@ -28,7 +45,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         picture.snp_makeConstraints { (make) -> Void in
             make.height.width.equalTo(200)
             make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(50)
+            make.top.equalTo(topBar.snp_bottom).offset(20)
         }
         name.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(picture.snp_bottom).offset(5)
@@ -37,9 +54,8 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         classes.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(self.view)
             make.top.equalTo(name.snp_bottom).offset(10)
-            make.height.equalTo(200)
+            make.height.equalTo(100)
         }
-        
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sessionArray.count
@@ -58,5 +74,12 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "back") {
+            let svc = segue.destinationViewController as! ClassDetailsView
+            svc.classID = classID
+
+        }
     }
 }

@@ -95,7 +95,7 @@ func sendSessionsPOST(classID: String, taName: String, success:()->()) {
                 if data != nil {
                     let json = JSON(data: data!)
                     print(json)
-                    TAArray.removeAll()
+                    sessionArray.removeAll()
                     for var i=0;i<json.count;i++ {
                         guard let name = json[i]["Name"].string,
                             let className = json[i]["Classname"].string,
