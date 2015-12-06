@@ -1,0 +1,86 @@
+\begin{theindex}
+
+  \item {all\discretionary {-}{}{}Classes}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{5}
+  \item {all\discretionary {-}{}{}T\discretionary {-}{}{}As}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {class\discretionary {-}{}{}T\discretionary {-}{}{}As}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{5}
+  \item {course}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+
+  \indexspace
+
+  \item {delete\discretionary {-}{}{}All}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+  \item {delete\discretionary {-}{}{}Class}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+  \item {delete\discretionary {-}{}{}T\discretionary {-}{}{}A}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+
+  \indexspace
+
+  \item {get\discretionary {-}{}{}Sessions}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+  \item {go\discretionary {-}{}{}Where}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{6}
+
+  \indexspace
+
+  \item {index.\discretionary {-}{}{}php}, \hyperpage{5}
+  \item {insert\discretionary {-}{}{}Class}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{7}
+  \item {insert\discretionary {-}{}{}Session}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{7}
+  \item {insert\discretionary {-}{}{}T\discretionary {-}{}{}A}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{7}
+
+  \indexspace
+
+  \item {name}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{7}
+
+  \indexspace
+
+  \item {T\discretionary {-}{}{}As\discretionary {-}{}{}Classes}
+    \subitem {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{7}
+  \item {to\discretionary {-}{}{}\_\discretionary {-}{}{}json.\discretionary {-}{}{}php}, 
+		\hyperpage{5}
+    \subitem {all\discretionary {-}{}{}Classes}, \hyperpage{5}
+    \subitem {all\discretionary {-}{}{}T\discretionary {-}{}{}As}, 
+		\hyperpage{5}
+    \subitem {class\discretionary {-}{}{}T\discretionary {-}{}{}As}, 
+		\hyperpage{5}
+    \subitem {course}, \hyperpage{6}
+    \subitem {delete\discretionary {-}{}{}All}, \hyperpage{6}
+    \subitem {delete\discretionary {-}{}{}Class}, \hyperpage{6}
+    \subitem {delete\discretionary {-}{}{}T\discretionary {-}{}{}A}, 
+		\hyperpage{6}
+    \subitem {get\discretionary {-}{}{}Sessions}, \hyperpage{6}
+    \subitem {go\discretionary {-}{}{}Where}, \hyperpage{6}
+    \subitem {insert\discretionary {-}{}{}Class}, \hyperpage{7}
+    \subitem {insert\discretionary {-}{}{}Session}, \hyperpage{7}
+    \subitem {insert\discretionary {-}{}{}T\discretionary {-}{}{}A}, 
+		\hyperpage{7}
+    \subitem {name}, \hyperpage{7}
+    \subitem {T\discretionary {-}{}{}As\discretionary {-}{}{}Classes}, 
+		\hyperpage{7}
+
+\end{theindex}

@@ -21,7 +21,7 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     override func viewDidLoad() {
-        
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(backView)
@@ -51,11 +51,11 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
             make.left.right.bottom.equalTo(backView)
             make.top.equalTo(topBar.snp_bottom)
         }
+        tableView.separatorStyle = .None
         
     }
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
-        print(TAArray)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,11 +63,19 @@ class ClassDetailsView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        let separator = UIView()
+        cell.addSubview(separator)
         let name = UILabel()
         name.text = TAArray[indexPath.row].name
         cell.addSubview(name)
         name.snp_makeConstraints { (make) -> Void in
-            make.center.equalTo(cell)
+            make.centerY.equalTo(cell)
+            make.left.equalTo(cell).offset(10)
+        }
+        separator.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.15)
+        separator.snp_makeConstraints { (make) -> Void in
+            make.left.bottom.right.equalTo(cell)
+            make.height.equalTo(0.5)
         }
         return cell
     }

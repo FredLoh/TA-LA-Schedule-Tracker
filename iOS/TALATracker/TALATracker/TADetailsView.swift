@@ -23,6 +23,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     override func viewDidLoad() {
+        classes.tableFooterView = UIView(frame: CGRectZero)
         let topBar = generateTopBar(self.view)
         let backArrow = UIButton()
         backArrow.setImage(UIImage(named: "backArrow"), forState: UIControlState.Normal)

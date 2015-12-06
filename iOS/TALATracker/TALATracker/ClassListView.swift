@@ -19,6 +19,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var sideSwipeRecognizer: UISwipeGestureRecognizer?
     var classID: String?
     var taName: String?
+    let addButton = UIButton()
     
     func swipeLeft(recognizer : UISwipeGestureRecognizer) {
         if self.segmentedView.selectedIndex == 0 {
@@ -39,6 +40,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if segmentedView.selectedIndex == 1 {
             getTAListPOST({ () -> () in
                 self.tableView.reloadData()
+                self.addButton.hidden = false
                 SwiftOverlays.removeAllBlockingOverlays()
             })
         } else {
@@ -46,6 +48,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
             print("2")
             sendFirstPOST() { () -> () in
                 self.tableView.reloadData()
+                self.addButton.hidden = true
                 SwiftOverlays.removeAllBlockingOverlays()
             }
         }
@@ -56,6 +59,7 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidLoad() {
         self.view.addSubview(backView)
+        backView.addSubview(addButton)
         //        let topBar = generateTopBar(backView)
         sideSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
         sideSwipeRecognizer!.direction = .Left
@@ -90,6 +94,59 @@ class ClassListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.tableFooterView = UIView(frame: CGRectZero)
         let classListTitle = UILabel()
         classListTitle.text = "Class List"
+        
+        addButton.setBackgroundImage(UIImage(named: "add"), forState: UIControlState.Normal)
+        addButton.setBackgroundImage(UIImage(named: "add2"), forState: UIControlState.Highlighted)
+        addButton.snp_makeConstraints { (make) -> Void in
+            make.right.bottom.equalTo(backView).offset(-5)
+            make.height.width.equalTo(75)
+        }
+        addButton.addTarget(self, action: "addTA", forControlEvents: UIControlEvents.TouchUpInside)
+        addButton.hidden = true
+        backView.bringSubviewToFront(addButton)
+    }
+    
+    func addTA() {
+        let alert = UIAlertController(title: "Add TA/LA", message: "Please make sure to fill out all fields correctly!", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter name:"
+        })
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter class name:"
+        })
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter days (M,T,W,Th,F):"
+        })
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter times (ex: 11:00 AM - 1:00 PM):"
+        })
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Enter location:"
+        })
+        let sendAction = UIAlertAction(title: "Send", style: .Default) { (action) in
+            var didFillFields = true
+            for(var i=0;i<alert.textFields?.count;i++) {
+                if alert.textFields![i].text == "" {
+                    didFillFields = false
+                }
+            }
+            if didFillFields == true {
+                guard let name = alert.textFields?[0].text,
+                let className = alert.textFields?[1].text,
+                let days = alert.textFields?[2].text,
+                let times = alert.textFields?[3].text,
+                    let location = alert.textFields?[4].text else {
+                        return
+                }
+                addClass(name, className: className, days: days, times: times, location: location, success: { () -> () in
+                    print("Class added succesfully")
+                })
+            }
+        }
+        alert.addAction(sendAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

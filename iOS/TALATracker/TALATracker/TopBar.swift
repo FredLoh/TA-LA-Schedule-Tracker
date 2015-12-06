@@ -28,20 +28,3 @@ func generateTopBar(superView: UIView) -> UIView {
     }
     return topBar
 }
-
-    class Walls: SKSpriteNode {
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            didLoad()
-        }
-        
-        func didLoad() {
-            let rectangle = SKShapeNode(rectOfSize: CGSize(width:390, height:200))
-            rectangle.position = CGPointMake(frame.midX-10, frame.midY + 50)
-            rectangle.strokeColor = SKColor.blackColor()
-            rectangle.glowWidth = 1.0
-            rectangle.physicsBody = SKPhysicsBody(edgeChainFromPath: rectangle.path!)
-            rectangle.physicsBody?.dynamic = false
-        }
-    }

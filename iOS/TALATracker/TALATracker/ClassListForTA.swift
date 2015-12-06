@@ -19,9 +19,7 @@ class ClassListForTA: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidLoad() {
-        addClass { () -> () in
-            print("Success")
-        }
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         let topBar = generateTopBar(self.view)
         let backArrow = UIButton()
         backArrow.setImage(UIImage(named: "backArrow"), forState: UIControlState.Normal)
@@ -56,6 +54,17 @@ class ClassListForTA: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return generateInitialCell(&classesArray, tableView: tableView, indexPath: indexPath)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("TimesForTA", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "TimesForTA") {
+            let svc = segue.destinationViewController as! TimesForClassGivenTA
+            svc.taName = taName
+        }
     }
     
 }
