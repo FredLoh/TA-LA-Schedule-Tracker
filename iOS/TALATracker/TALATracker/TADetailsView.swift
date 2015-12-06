@@ -35,12 +35,13 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
             make.centerY.equalTo(topBar)
         }
 
-        picture.image = UIImage(named: "CU")
+        picture.image = UIImage(named: "personOutline")
         name.text = "\(taName!)"
         name.font = taNameFont
         classes.delegate = self
         classes.dataSource = self
         classes.separatorStyle = .None
+        classes.scrollEnabled = false
         self.view.addSubview(picture)
         self.view.addSubview(name)
         self.view.addSubview(classes)
@@ -56,7 +57,7 @@ class TADetailsView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         classes.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(self.view)
             make.top.equalTo(name.snp_bottom).offset(10)
-            make.height.equalTo(100)
+            make.bottom.equalTo(self.view)
         }
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '58B4A720E0E8ADB1207D4A9F'
+               BlueprintIdentifier = 'EFE45061EE6AE193F061679D'
                BlueprintName = 'Pods-TALATracker'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_TALATracker.framework'>
