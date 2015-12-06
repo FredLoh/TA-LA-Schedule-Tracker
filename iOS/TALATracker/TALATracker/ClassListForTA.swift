@@ -57,7 +57,9 @@ class ClassListForTA: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("TimesForTA", sender: self)
+        sendSessionsPOST(classesArray[indexPath.row].className!, taName: self.taName!) { () -> () in
+            self.performSegueWithIdentifier("TimesForTA", sender: self)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
