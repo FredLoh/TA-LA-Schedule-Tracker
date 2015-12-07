@@ -27,3 +27,5 @@ In order to build and test the iOS component of the code a Mac and Xcode are req
 (Austin-if you could describe the hosting service thing here, that'd be great--seems you're the one with the best handle on it, and it's pretty vital for getting an image of our project as a whole.)
 
 
+##Video Demo
+[![Demo Video](http://img.youtube.com/vi/V84VvTfepEw/0.jpg)](https://www.youtube.com/watch?v=V84VvTfepEw)
